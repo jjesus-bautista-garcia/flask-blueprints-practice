@@ -21,4 +21,9 @@ class Config:
     FLASK_ENV = environ.get("FLASK_DEBUG")
     FLASK_APP = environ.get("FLASK_APP")
 
+    # Static Assets
+    STATIC_FOLDER = "static"
+    TEMPLATES_FOLDER = "templates"
+    COMPRESSOR_DEBUG = True
+
     

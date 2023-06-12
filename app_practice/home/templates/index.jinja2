@@ -1,0 +1,23 @@
+{% extends "layout.jinja2" %}
+
+{% block pagestyles %}
+    {% assets "home_style_bundle" %}
+      <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css"/>
+    {% endassets%}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>{{ title }}</h1>
+        <h2>{{ subtitle }}</h2>
+    </main>
+
+    <section class="types">
+        <ul>
+            {% for type in types %}
+              <li>{{type.type.name}} - <a href="{{ type.type.url }}">Info</a></li>
+            {% endfor %}
+
+        </ul>
+    </section>
+{% endblock %}

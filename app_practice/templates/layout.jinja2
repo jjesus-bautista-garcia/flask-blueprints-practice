@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta chartset="utf-8"/>
+        <title>{{ title }} | Flask Blueprint Practice</title>
+        <link href="{{ url_for('static', filename='dist/css/style.css') }}" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Gemunu+Libre&display=swap" rel="stylesheet">
+        {% block pagestyles %}{% endblock %}
+    </head>
+
+    <body class="{{ template }}">
+        {% block content %} {% endblock %}
+    </body>
+</html>
