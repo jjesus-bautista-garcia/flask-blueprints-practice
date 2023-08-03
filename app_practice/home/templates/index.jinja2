@@ -13,11 +13,17 @@
     </main>
 
     <section class="types">
-        <ul>
+
+        {% if pokemon_img %}
+
+        <img src="{{pokemon_img}}">
+
+        {% endif %}
+        {# <ul>
             {% for type in types %}
               <li>{{type.type.name}} - <a href="{{ type.type.url }}">Info</a></li>
             {% endfor %}
 
-        </ul>
+        </ul> #}
     </section>
 {% endblock %}

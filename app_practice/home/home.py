@@ -13,36 +13,23 @@ home_bp = Blueprint(
 @home_bp.route("/", methods=['GET'])
 def home():
     "Homepage"
-    api_data = fetch_pokemon() # pokemon types
 
     return render_template(
         "index.jinja2",
-        title='Good pokemons',
-        subtitle=api_data['species']['name'],
+        title='Home page',
+        subtitle="In the url add '/home/<pokemon_of_your_choice>'.",
+        template="home-template"
+    )
+
+@home_bp.route("/home/<string:pokemon_name>", methods=['GET'])
+def home_with_selected_pokemon(pokemon_name):
+    "Main page for pokemon selected"
+    api_data = fetch_pokemon(pokemon_name) # pokemon types
+
+    return render_template(
+        "index.jinja2",
+        title='Home page',
+        subtitle=f"Let's talk about the best pokemon ever: {pokemon_name}.",
         template="home-template",
-        types=api_data['types'],
-        id=api_data['id'],
-        species=api_data['species'],
-        moves=api_data['moves']
-    )
-
-@home_bp.route("/about", methods=['GET'])
-def about():
-    "About information"
-
-    return render_template(
-        "index.jinja2",
-        title='About page',
-        subtitle='This is an example of the about page.',
-        template="about-template"
-    )
-
-@home_bp.route("/contact", methods=['GET'])
-def contact():
-    "Contact information"
-    return render_template(
-        "index.jinja2",
-        title='Contact page',
-        subtitle='This is the contact page.',
-        template="contact-template"
+        pokemon_img = api_data['sprites']['front_default']
     )
