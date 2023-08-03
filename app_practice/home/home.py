@@ -4,7 +4,8 @@ from app_practice.api import fetch_pokemon
 
 # Blueprint configuration
 home_bp = Blueprint(
-    "home_bp", __name__,
+    "home_bp",
+    __name__,
     template_folder="templates",
     static_folder="static"
 )
@@ -23,4 +24,25 @@ def home():
         id=api_data['id'],
         species=api_data['species'],
         moves=api_data['moves']
+    )
+
+@home_bp.route("/about", methods=['GET'])
+def about():
+    "About information"
+
+    return render_template(
+        "index.jinja2",
+        title='About page',
+        subtitle='This is an example of the about page.',
+        template="about-template"
+    )
+
+@home_bp.route("/contact", methods=['GET'])
+def contact():
+    "Contact information"
+    return render_template(
+        "index.jinja2",
+        title='Contact page',
+        subtitle='This is the contact page.',
+        template="contact-template"
     )
