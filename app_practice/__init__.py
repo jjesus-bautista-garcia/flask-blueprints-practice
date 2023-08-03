@@ -12,10 +12,12 @@ def init_app():
     with app.app_context():
         # Importing parts of our application
         from .home import home
+        from .info import info
         from .assets import compile_static_assets
         
         # Register Blueprints
         app.register_blueprint(home.home_bp)
+        app.register_blueprint(info.info_bp)
 
         # Compile static assets
         compile_static_assets(assets)

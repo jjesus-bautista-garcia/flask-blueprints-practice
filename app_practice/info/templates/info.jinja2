@@ -1,0 +1,28 @@
+{% extends "layout.jinja2" %}
+
+{% block pagestyles %}
+    {% assets "info_style_bundle" %}
+      <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css"/>
+    {% endassets%}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>{{ n_title }}</h1>
+        <h2>{{ n_subtitle }}</h2>
+    </main>
+
+    <section class="types">
+        <h2>ID: {{id}} </h2>
+        <h2>Height: {{height}}</h2>
+        <h2>Weight: {{weight}}</h2>
+
+        <h2>Type(s)</h2>
+        <ul>
+            {% for type in types %}
+              <li>{{type.type.name}} - More info: <a href="{{ type.type.url }}">Info</a></li>
+            {% endfor %}
+
+        </ul>
+    </section>
+{% endblock %}
